@@ -18,6 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".meizi.MeiziActivity"
+            android:theme="@style/ActivityStyle"/>
+        
+        <activity android:name=".meizi.PictureActivity"
+            android:theme="@style/ActivityStyle"/>
+
+        <activity android:name=".meizi.AboutActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/about_app"/>
     </application>
 
 </manifest>
