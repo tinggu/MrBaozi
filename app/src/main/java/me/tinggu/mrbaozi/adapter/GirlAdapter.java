@@ -17,9 +17,6 @@ import me.tinggu.mrbaozi.R;
 import me.tinggu.mrbaozi.widget.RatioImageView;
 import rx.functions.Action1;
 
-/**
- * Created by zsj on 2015/11/20 0020.
- */
 public class GirlAdapter extends RecyclerView.Adapter<GirlAdapter.GirlViewHolder> {
 
     private Context mContext;
@@ -38,30 +35,31 @@ public class GirlAdapter extends RecyclerView.Adapter<GirlAdapter.GirlViewHolder
 
     @Override
     public GirlViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        GirlViewHolder holder = new GirlViewHolder(LayoutInflater.from(mContext).inflate(
-                R.layout.girl_item, parent, false));
+        LayoutInflater layoutInflater = LayoutInflater.from(mContext);
+        View girlItem = layoutInflater.inflate(R.layout.girl_item, parent, false);
+        GirlViewHolder holder = new GirlViewHolder(girlItem);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(GirlViewHolder holder, int position) {
-
         PrettyGirl girl = mPrettyGirlList.get(position);
-
+        ViewGroup.LayoutParams lp = holder.imageView.getLayoutParams();
+        holder.imageView.setOriginal(girl.meta.width, girl.meta.height);
+        lp.height = girl.meta.height;
+        
         holder.girl = girl;
-//        holder.binding.setPrettyGirl(girl);
-//        holder.binding.executePendingBindings();
 
         Glide.with(mContext)
                 .load(girl.url)
                 .into(holder.imageView);
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        PrettyGirl girl = mPrettyGirlList.get(position);
-        return Math.round((float) girl.meta.width / (float) girl.meta.height * 10f);
-    }
+//    @Override
+//    public int getItemViewType(int position) {
+//        PrettyGirl girl = mPrettyGirlList.get(position);
+//        return Math.round((float) girl.meta.width / (float) girl.meta.height * 10f);
+//    }
 
     @Override
     public int getItemCount() {
@@ -71,14 +69,14 @@ public class GirlAdapter extends RecyclerView.Adapter<GirlAdapter.GirlViewHolder
     class GirlViewHolder extends RecyclerView.ViewHolder {
 
         RatioImageView imageView;
-//        GirlItemBinding binding;
 
         PrettyGirl girl;
 
         public GirlViewHolder(View itemView) {
             super(itemView);
+            this.girl = girl;
             imageView = (RatioImageView) itemView.findViewById(R.id.image);
-//            binding = DataBindingUtil.bind(itemView);
+//            imageView.setOriginal(girl.meta.width, girl.meta.height);
             //防止手抖连续点击图片打开两个页面
             RxView.clicks(imageView)
                     .throttleFirst(1000, TimeUnit.MILLISECONDS)

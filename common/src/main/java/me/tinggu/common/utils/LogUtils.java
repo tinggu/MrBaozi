@@ -1,4 +1,4 @@
-package me.tinggu.common.rest;
+package me.tinggu.common.utils;
 
 import android.util.Log;
 
@@ -6,7 +6,7 @@ public class LogUtils {
 
     public static String TAG = "LOG";
 
-    public static boolean DEBUG_ENABLED;
+    public static boolean DEBUG_ENABLED = true;
 
     public static void init(String tag, boolean debugEnabled) {
         TAG = tag;

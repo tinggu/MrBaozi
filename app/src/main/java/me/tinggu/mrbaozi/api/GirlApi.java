@@ -7,9 +7,6 @@ import retrofit.http.GET;
 import retrofit.http.Query;
 import rx.Observable;
 
-/**
- * Created by zsj on 2015/11/20 0020.
- */
 public interface GirlApi {
 
     @GET("v1/channels/images.json")

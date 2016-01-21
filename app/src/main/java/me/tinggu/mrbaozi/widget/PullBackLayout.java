@@ -15,9 +15,6 @@ import android.widget.FrameLayout;
 import me.tinggu.common.utils.ScreenUtils;
 
 
-/**
- * Created by zsj on 2015/11/1 0001.
- */
 public class PullBackLayout extends FrameLayout{
 
 

@@ -4,9 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-/**
- * Created by zsj on 2015/11/16 0016.
- */
+
 public class RatioImageView extends ImageView {
 
     private int originalWidth;
@@ -22,6 +20,11 @@ public class RatioImageView extends ImageView {
 
     public RatioImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+    }
+
+    public void setOriginal(int originalWidth, int originalHeight) {
+        this.originalWidth = originalWidth;
+        this.originalHeight = originalHeight;
     }
 
     public void setOriginalWidth(int originalWidth) {
@@ -45,8 +48,7 @@ public class RatioImageView extends ImageView {
             }
 
             setMeasuredDimension(width, height);
-        }
-        else {
+        } else {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         }
     }

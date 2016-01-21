@@ -1,7 +1,5 @@
 package me.tinggu.common.rest;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.squareup.okhttp.Headers;
 import com.squareup.okhttp.Interceptor;
 import com.squareup.okhttp.MediaType;
@@ -17,6 +15,7 @@ import java.util.logging.Logger;
 
 import me.tinggu.common.AppConstants;
 import me.tinggu.common.ServerConstants;
+import me.tinggu.common.utils.LogUtils;
 import okio.BufferedSink;
 import okio.GzipSink;
 import okio.Okio;
@@ -42,10 +41,9 @@ public class RestUtils implements AppConstants, ParameterKeys, ServerConstants {
 
     private static Retrofit getRetrofit() {
         Retrofit.Builder builder = new Retrofit.Builder();
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-        builder.addConverterFactory(GsonConverterFactory.create(gson));
-//        builder.addConverterFactory()
+//        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         builder.baseUrl(API_BASE_URL);//设置远程地址
+        builder.addConverterFactory(GsonConverterFactory.create());
         builder.addCallAdapterFactory(RxJavaCallAdapterFactory.create());
         builder.client(getOkHttpClient());
         return builder.build();
