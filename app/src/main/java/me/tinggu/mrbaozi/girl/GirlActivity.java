@@ -33,9 +33,7 @@ public class GirlActivity extends AppCompatActivity {
                     .replace(R.id.fragmentPane, girlFragment, FRAGMENT_TAG_GIRL)
                     .commit();
         }
-
-
+        
     }
-
 
 }
